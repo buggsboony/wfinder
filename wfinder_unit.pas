@@ -149,6 +149,7 @@ end; //parseWmList
 
 procedure loadItems(form1:TForm1);
 begin
+  //lbIndexes:=TStringList.Create;
       if(hprocess <> nil)  then
       begin
         // hProcess should have now run the external executable (because we use poWaitOnExit).
@@ -162,6 +163,7 @@ begin
           parseWmList(wmList);
           form1.combobox1.Items:= windowNames;
           form1.ListBox1.Items := windowNames;
+
         // Clean up to avoid memory leaks:
         hProcess.Free;
             hprocess:=nil;
@@ -171,9 +173,20 @@ end;  //loadItems
 //switch Window then close self
 procedure switchWindow(form1:TForm1);
 begin
-                showMessage( form1.combobox1.text +
-                      inttostr(  form1.ListBox1.items.count) );
+ShowMessage( 'selected index: ' +  '' );
+//                showMessage( form1.combobox1.text +   inttostr(  form1.ListBox1.items.count) );
+
 end; //switchWindow
+
+procedure fillLbIndexes(form1:TForm1);
+var i:integer;
+begin
+     for i:=0 to form1.ComboBox1.Items.count -1 do
+           begin
+
+               lbIndexes.Add( IntToStr(i) );
+           end;
+end;
 
 function escExit(form1:TForm1; key:Word):boolean;
 begin
@@ -279,8 +292,8 @@ end;
 procedure TForm1.ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
   var
-     i: integer;
-     Selected,s: string;
+     i,index: integer;
+     Selected,wid: string;
  begin
      if ListBox1.ItemIndex = -1 then
        Exit;
@@ -289,10 +302,18 @@ procedure TForm1.ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
      begin
          s:= lbIndexes[0];
          ShowMessage( inttostr(i)+':'+ lbIndexes[i] );
-     end;                 }
-//       s:= lbIndexes[0];
+     end;
+     }
+     if( lbIndexes.Count = 0)then
+     begin
+        fillLbIndexes(form1);
+     end;
+       wid:= lbIndexes[0]; ShowMessage('idnex str'+wid);
+       index := 0 ; //StrToInt( form1.ListBox1.Selected[0]  );
+       wid:= windowIds[index];
 
-     ShowMessage(Selected+' '+ IntToStr( ListBox1.ItemIndex)+' '+ s+' '+  inttostr( lbIndexes.Count ) );
+       switchWindow(form1);
+     //ShowMessage(Selected+' '+ IntToStr( ListBox1.ItemIndex)+' '+ s+' '+  inttostr( lbIndexes.Count ) );
  end;
 
 end.
