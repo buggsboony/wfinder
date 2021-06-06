@@ -20,10 +20,17 @@ type
     procedure ComboBox1Enter(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure ComboBox1Select(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormPaint(Sender: TObject);
     procedure IdleTimer1Timer(Sender: TObject);
+    procedure ListBox1Click(Sender: TObject);
+    procedure ListBox1Enter(Sender: TObject);
+    procedure ListBox1KeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
+      );
+    procedure ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
 
   public
@@ -32,7 +39,8 @@ type
 
 var
   Form1: TForm1;
-  wmList,   windowNames  ,  windowIds : TStringList;
+  wmList,   windowNames  , windowIds : TStringList;
+  lbIndexes:TStringList;
   hprocess: TProcess;
 
 implementation
@@ -40,7 +48,6 @@ implementation
 {$R *.lfm}
 
 { TForm1 }
-
 
 procedure wmctrl();
 var
@@ -91,7 +98,7 @@ line : AnsiString;
 swid,si,shostname, rest:AnsiString;
 begin
      csteStart:=0;
-  slParse:=TStringList.Create;
+     slParse:=TStringList.Create;
     slparse.Delimiter:=' ';
 
   windowNames := TStringList.Create ;
@@ -154,7 +161,7 @@ begin
 //        ShowMessage(wmList.Text);
           parseWmList(wmList);
           form1.combobox1.Items:= windowNames;
-          form1.ListBox1.Items:=windowNames;
+          form1.ListBox1.Items := windowNames;
         // Clean up to avoid memory leaks:
         hProcess.Free;
             hprocess:=nil;
@@ -168,18 +175,26 @@ begin
                       inttostr(  form1.ListBox1.items.count) );
 end; //switchWindow
 
+function escExit(form1:TForm1; key:Word):boolean;
+begin
+  if key=27 then
+  begin
+       Result:=true;
+    Form1.Close; //Close on ESC key
+  end;
+     result:=false;
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
      wmctrl();
+     lbIndexes:=TStringList.Create;
 end;
 
 procedure TForm1.ComboBox1KeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if key=27 then
-  begin
-    Form1.Close; //Close on ESC key
-  end else
+  if(not escExit(form1,key) ) then
   begin
      //on first type load items
      //loadItems(combobox1);
@@ -191,11 +206,17 @@ begin
   end;
 end;
 
+procedure TForm1.ComboBox1Select(Sender: TObject);
+begin
+  switchWindow(form1);
+end;
+
 procedure TForm1.ComboBox1Change(Sender: TObject);
 var i:integer;
   var str:AnsiString;
 begin
   ListBox1.Clear;
+  lbIndexes.clear;
   if ComboBox1.Text='' then
   begin
       //Vide => all
@@ -209,8 +230,8 @@ begin
                    if( str.ToLower().Contains(LowerCase(ComboBox1.Text) ))then
                    begin
                          //memoriz combo.index;
+                          lbIndexes.Add( IntToStr(i) );
                           ListBox1.Items.Add(str);
-
                    end;
            end;
   end;
@@ -224,10 +245,7 @@ end;
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
   );
 begin
-  if key=27 then
-  begin
-    Form1.Close; //Close on ESC key
-  end;
+  escExit(form1,key);
 end;
 
 procedure TForm1.FormPaint(Sender: TObject);
@@ -241,6 +259,41 @@ begin
   loadItems(form1);
   IdleTimer1.Enabled:=false;
 end;
+
+procedure TForm1.ListBox1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TForm1.ListBox1Enter(Sender: TObject);
+begin
+//showMessage('on enter');  ListBox1.ItemIndex:=-1;
+end;
+
+procedure TForm1.ListBox1KeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  escExit(form1,key);
+end;
+
+procedure TForm1.ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+  var
+     i: integer;
+     Selected,s: string;
+ begin
+     if ListBox1.ItemIndex = -1 then
+       Exit;
+     Selected := ListBox1.Items[ListBox1.ItemIndex];
+   {  for    i:=0 to lbIndexes.Count-1 do
+     begin
+         s:= lbIndexes[0];
+         ShowMessage( inttostr(i)+':'+ lbIndexes[i] );
+     end;                 }
+//       s:= lbIndexes[0];
+
+     ShowMessage(Selected+' '+ IntToStr( ListBox1.ItemIndex)+' '+ s+' '+  inttostr( lbIndexes.Count ) );
+ end;
 
 end.
 

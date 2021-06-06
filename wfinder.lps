@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="11"/>
     <BuildModes Active="Default"/>
-    <Units Count="3">
+    <Units Count="4">
       <Unit0>
         <Filename Value="wfinder.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -17,8 +17,8 @@
         <ComponentName Value="Form1"/>
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="194"/>
-        <CursorPos X="44" Y="212"/>
+        <TopLine Value="265"/>
+        <CursorPos X="83" Y="295"/>
         <UsageCount Value="20"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -30,127 +30,134 @@
         <CursorPos X="14" Y="816"/>
         <UsageCount Value="10"/>
       </Unit2>
+      <Unit3>
+        <Filename Value="/usr/lib/fpc/src/rtl/inc/objpash.inc"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="186"/>
+        <CursorPos X="8" Y="201"/>
+        <UsageCount Value="10"/>
+      </Unit3>
     </Units>
     <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="42" Column="17" TopLine="34"/>
+        <Caret Line="143" TopLine="127"/>
       </Position1>
       <Position2>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="69" Column="26" TopLine="53"/>
+        <Caret Line="111" Column="21" TopLine="81"/>
       </Position2>
       <Position3>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="79" Column="13" TopLine="53"/>
+        <Caret Line="117" Column="19" TopLine="105"/>
       </Position3>
       <Position4>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="99" Column="30" TopLine="86"/>
+        <Caret Line="140" Column="70" TopLine="133"/>
       </Position4>
       <Position5>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="109" Column="32" TopLine="100"/>
+        <Caret Line="92" Column="37" TopLine="77"/>
       </Position5>
       <Position6>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="103" Column="42" TopLine="96"/>
+        <Caret Line="190" Column="42" TopLine="178"/>
       </Position6>
       <Position7>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="106" Column="42" TopLine="99"/>
+        <Caret Line="189" Column="12" TopLine="175"/>
       </Position7>
       <Position8>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="94" Column="39" TopLine="112"/>
+        <Caret Line="194" Column="55" TopLine="179"/>
       </Position8>
       <Position9>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="78" Column="34" TopLine="68"/>
+        <Caret Line="196" Column="73" TopLine="176"/>
       </Position9>
       <Position10>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="83" Column="8" TopLine="66"/>
+        <Caret Line="215" TopLine="191"/>
       </Position10>
       <Position11>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="96" Column="29" TopLine="78"/>
+        <Caret Line="209" TopLine="200"/>
       </Position11>
       <Position12>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="33" Column="19" TopLine="18"/>
+        <Caret Line="154" Column="45" TopLine="143"/>
       </Position12>
       <Position13>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="96" Column="16" TopLine="75"/>
+        <Caret Line="183" Column="30" TopLine="164"/>
       </Position13>
       <Position14>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="100" Column="24" TopLine="85"/>
+        <Caret Line="163" Column="53" TopLine="154"/>
       </Position14>
       <Position15>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="103" Column="36" TopLine="79"/>
+        <Caret Line="258" Column="43" TopLine="242"/>
       </Position15>
       <Position16>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="91" Column="26" TopLine="76"/>
+        <Caret Line="267" Column="58" TopLine="247"/>
       </Position16>
       <Position17>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="94" Column="20" TopLine="75"/>
+        <Caret Line="263" Column="4" TopLine="248"/>
       </Position17>
       <Position18>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="95" Column="8" TopLine="75"/>
+        <Caret Line="42" Column="48" TopLine="46"/>
       </Position18>
       <Position19>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="117" TopLine="103"/>
+        <Caret Line="65" Column="16" TopLine="58"/>
       </Position19>
       <Position20>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="143" TopLine="127"/>
+        <Caret Line="100" Column="6" TopLine="75"/>
       </Position20>
       <Position21>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="111" Column="21" TopLine="81"/>
+        <Caret Line="190" Column="24" TopLine="175"/>
       </Position21>
       <Position22>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="117" Column="19" TopLine="105"/>
+        <Caret Line="230" Column="25" TopLine="218"/>
       </Position22>
       <Position23>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="140" Column="70" TopLine="133"/>
+        <Caret Line="43" Column="19" TopLine="26"/>
       </Position23>
       <Position24>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="92" Column="37" TopLine="77"/>
+        <Caret Line="191" Column="22" TopLine="176"/>
       </Position24>
       <Position25>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="190" Column="42" TopLine="178"/>
+        <Caret Line="288" Column="109" TopLine="262"/>
       </Position25>
       <Position26>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="189" Column="12" TopLine="175"/>
+        <Caret Line="233" Column="46" TopLine="208"/>
       </Position26>
       <Position27>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="194" Column="55" TopLine="179"/>
+        <Caret Line="43" Column="24" TopLine="19"/>
       </Position27>
       <Position28>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="196" Column="73" TopLine="176"/>
+        <Caret Line="191" Column="28" TopLine="166"/>
       </Position28>
       <Position29>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="215" TopLine="191"/>
+        <Caret Line="233" Column="52" TopLine="208"/>
       </Position29>
       <Position30>
         <Filename Value="wfinder_unit.pas"/>
-        <Caret Line="209" Column="25" TopLine="191"/>
+        <Caret Line="288" Column="83" TopLine="262"/>
       </Position30>
     </JumpHistory>
     <RunParams>

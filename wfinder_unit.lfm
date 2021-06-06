@@ -18,14 +18,14 @@ object Form1: TForm1
     Height = 38
     Top = 32
     Width = 516
-    AutoComplete = True
-    AutoCompleteText = [cbactEnabled]
+    AutoCompleteText = []
     Font.Height = -21
     Font.Name = 'Source Code Pro'
     ItemHeight = 0
     OnChange = ComboBox1Change
     OnEnter = ComboBox1Enter
     OnKeyDown = ComboBox1KeyDown
+    OnSelect = ComboBox1Select
     ParentFont = False
     ParentShowHint = False
     TabOrder = 0
@@ -36,6 +36,10 @@ object Form1: TForm1
     Top = 75
     Width = 507
     ItemHeight = 0
+    OnClick = ListBox1Click
+    OnEnter = ListBox1Enter
+    OnKeyDown = ListBox1KeyDown
+    OnMouseUp = ListBox1MouseUp
     ScrollWidth = 505
     TabOrder = 1
     TopIndex = -1
