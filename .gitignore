@@ -26,8 +26,8 @@
 #*.obj
 #
 
+lib/x86_64-linux/
 # Delphi compiler-generated binaries (safe to delete)
-*.exe
 *.dll
 *.bpl
 *.bpi
