@@ -16,6 +16,8 @@ type
     ComboBox1: TComboBox;
     IdleTimer1: TIdleTimer;
     ListBox1: TListBox;
+    procedure ComboBox1Change(Sender: TObject);
+    procedure ComboBox1Enter(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormCreate(Sender: TObject);
@@ -132,8 +134,8 @@ begin
           end;
 
 
-       ShowMessage(line);
-       break;
+
+       //break;
      end;
 
 end; //parseWmList
@@ -159,6 +161,13 @@ begin
       end;
 end;  //loadItems
 
+//switch Window then close self
+procedure switchWindow(form1:TForm1);
+begin
+                showMessage( combobox1.text +
+                      inttostr(  ListBox1.items.count) );
+end; //switchWindow
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
      wmctrl();
@@ -174,7 +183,42 @@ begin
   begin
      //on first type load items
      //loadItems(combobox1);
+
+     if key=13 then // on Enter key
+     begin
+       switchWindow(form1);
+     end;
   end;
+end;
+
+procedure TForm1.ComboBox1Change(Sender: TObject);
+var i:integer;
+  var str:AnsiString;
+begin
+  ListBox1.Clear;
+  if ComboBox1.Text='' then
+  begin
+      //Vide => all
+      ListBox1.Items:=ComboBox1.Items;
+  end else
+  begin
+  //Filter search while typing
+           for i:=0 to ComboBox1.Items.count -1 do
+           begin
+               str:= ComboBox1.Items[i];
+                   if( str.ToLower().Contains(LowerCase(ComboBox1.Text) ))then
+                   begin
+                         //memoriz combo.index;
+                          ListBox1.Items.Add(str);
+
+                   end;
+           end;
+  end;
+end;
+
+procedure TForm1.ComboBox1Enter(Sender: TObject);
+begin
+
 end;
 
 procedure TForm1.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState

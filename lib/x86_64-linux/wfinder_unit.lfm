@@ -18,9 +18,13 @@ object Form1: TForm1
     Height = 38
     Top = 32
     Width = 516
+    AutoComplete = True
+    AutoCompleteText = [cbactEnabled]
     Font.Height = -21
     Font.Name = 'Source Code Pro'
     ItemHeight = 0
+    OnChange = ComboBox1Change
+    OnEnter = ComboBox1Enter
     OnKeyDown = ComboBox1KeyDown
     ParentFont = False
     ParentShowHint = False
