@@ -172,9 +172,17 @@ end;  //loadItems
 
 //switch Window then close self
 procedure switchWindow(form1:TForm1);
+var wid:ansistring;
+index:integer;
 begin
-ShowMessage( 'selected index: ' +  '' );
-//                showMessage( form1.combobox1.text +   inttostr(  form1.ListBox1.items.count) );
+  if(form1.ListBox1.items.count>0) then
+  begin
+        index:= StrToInt(  lbIndexes[0] );//Le premier
+         wid := windowIds[index];
+//        ShowMessage( 'selected index: wid= ' +  wid );
+//      showMessage( form1.combobox1.text +   inttostr(  form1.ListBox1.items.count) );
+        wmctrlSwitch(wid);
+  end;
 
 end; //switchWindow
 
@@ -312,7 +320,7 @@ procedure TForm1.ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
        index := 0 ; //StrToInt( form1.ListBox1.Selected[0]  );
        wid:= windowIds[index];
 
-       switchWindow(form1,wid);
+       switchWindow(form1);
      //ShowMessage(Selected+' '+ IntToStr( ListBox1.ItemIndex)+' '+ s+' '+  inttostr( lbIndexes.Count ) );
  end;
 
