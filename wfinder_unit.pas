@@ -88,7 +88,7 @@ end;    //Wmctrl()
 
 
   
-procedure wmctrlSwitch(wid:AnsiString);
+procedure wmctrlSwitch(wname:AnsiString);
 var
 wait:boolean=false;
 begin
@@ -98,7 +98,7 @@ hProcess.Executable := 'bash';
 // On Linux/Unix/FreeBSD/mmeters on the command line:
  hprocess.Parameters.Add('-c');
  // Here we pipe the password to the sudo command which then executes fdisk -l:
- hprocess.Parameters.add(' wmctrl -l');
+ hprocess.Parameters.add(' wmctrl -a '+wname);
 //hprocess.Parameters.add('wmctrl -l > /home/boony/wfinder.txt');
 //hProcess.Options := hProcess.Options + [poWaitOnExit, poUsePipes];//wait
 hProcess.Options := hProcess.Options + [poUsePipes];//wait
@@ -115,7 +115,7 @@ begin
   //wmList.Add('stderr:');
  // wmList.LoadFromStream(hProcess.Stderr);
 // Show output on screen:
-ShowMessage(wmList.Text);
+ShowMessage('done');
 // Clean up to avoid memory leaks:
 hProcess.Free;
 wmList.Free;
@@ -207,7 +207,7 @@ begin
 end;  //loadItems
 
 //switch Window then close self
-procedure switchWindow(form1:TForm1);
+procedure switchWindow(form1:TForm1;text:ansistring);
 var wid:ansistring;
 index:integer;
 begin
@@ -217,7 +217,7 @@ begin
          wid := windowIds[index];
 //        ShowMessage( 'selected index: wid= ' +  wid );
 //      showMessage( form1.combobox1.text +   inttostr(  form1.ListBox1.items.count) );
-        wmctrlSwitch(wid);
+        wmctrlSwitch(text);
   end;
 
 end; //switchWindow
@@ -258,14 +258,14 @@ begin
 
      if key=13 then // on Enter key
      begin
-       switchWindow(form1);
+       switchWindow(form1, ComboBox1.Text);
      end;
   end;
 end;
 
 procedure TForm1.ComboBox1Select(Sender: TObject);
 begin
-  switchWindow(form1);
+  switchWindow(form1,ComboBox1.Text);
 end;
 
 procedure TForm1.ComboBox1Change(Sender: TObject);
@@ -352,11 +352,11 @@ procedure TForm1.ListBox1MouseUp(Sender: TObject; Button: TMouseButton;
      begin
         fillLbIndexes(form1);
      end;
-       wid:= lbIndexes[0]; ShowMessage('idnex str'+wid);
-       index := 0 ; //StrToInt( form1.ListBox1.Selected[0]  );
-       wid:= windowIds[index];
-
-       switchWindow(form1);
+       //wid:= lbIndexes[0]; ShowMessage('idnex str'+wid);
+       //index := 0 ; //StrToInt( form1.ListBox1.Selected[0]  );
+       //wid:= windowIds[index];
+//       showMessage(form1.ListBox1.GetSelectedText() );
+       switchWindow(form1, ListBox1.GetSelectedText() );
      //ShowMessage(Selected+' '+ IntToStr( ListBox1.ItemIndex)+' '+ s+' '+  inttostr( lbIndexes.Count ) );
  end;
 
