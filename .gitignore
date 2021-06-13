@@ -27,6 +27,9 @@
 #
 
 lib/x86_64-linux/
+*.ppu
+*.or
+*.compiled
 # Delphi compiler-generated binaries (safe to delete)
 *.dll
 *.bpl

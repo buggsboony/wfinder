@@ -16,6 +16,7 @@ type
     ComboBox1: TComboBox;
     IdleTimer1: TIdleTimer;
     ListBox1: TListBox;
+    Panel1: TPanel;
     procedure ComboBox1Change(Sender: TObject);
     procedure ComboBox1Enter(Sender: TObject);
     procedure ComboBox1KeyDown(Sender: TObject; var Key: Word;
@@ -42,6 +43,8 @@ var
   wmList,   windowNames  , windowIds : TStringList;
   lbIndexes:TStringList;
   hprocess: TProcess;
+  listBoxMaxHeight:integer=184;
+  maxItemShow:integer = 5;
 
 implementation
 
@@ -90,7 +93,7 @@ end;    //Wmctrl()
   
 procedure wmctrlSwitch(wname:AnsiString);
 var
-wait:boolean=false;
+wait:boolean=true;
 begin
 wmList:=TStringList.Create; //... a try...finally block would be nice to make sure
 hProcess := TProcess.Create(nil);
@@ -115,7 +118,7 @@ begin
   //wmList.Add('stderr:');
  // wmList.LoadFromStream(hProcess.Stderr);
 // Show output on screen:
-ShowMessage('done');
+//ShowMessage('done');
 // Clean up to avoid memory leaks:
 hProcess.Free;
 wmList.Free;
@@ -218,6 +221,8 @@ begin
 //        ShowMessage( 'selected index: wid= ' +  wid );
 //      showMessage( form1.combobox1.text +   inttostr(  form1.ListBox1.items.count) );
         wmctrlSwitch(text);
+        //wait the launch
+        form1.close;
   end;
 
 end; //switchWindow
@@ -289,6 +294,8 @@ begin
                          //memoriz combo.index;
                           lbIndexes.Add( IntToStr(i) );
                           ListBox1.Items.Add(str);
+                          ListBox1.visible:=true;
+                          ListBox1.height:= Round(ListBox1.Count * listBoxMaxHeight / maxItemShow);
                    end;
            end;
   end;
